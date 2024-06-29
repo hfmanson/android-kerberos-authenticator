@@ -105,6 +105,7 @@ public class KerberosAuthenticator extends AbstractAccountAuthenticator {
     String serviceName;
     if (matcher.matches() && matcher.groupCount() == 5) {
       serviceName = matcher.group(4);
+      Log.d(TAG, "serviceName: " + serviceName);
     } else {
       // Cannot obtain service name.
       result.putInt(AccountManager.KEY_ERROR_CODE, AccountManager.ERROR_CODE_BAD_ARGUMENTS);
@@ -152,10 +153,11 @@ public class KerberosAuthenticator extends AbstractAccountAuthenticator {
       return result;
     }
 
+    String hostName = serviceName + "." + matcher.group(5);
     Log.d(TAG, String.format("Will request service ticket for %s, account %s.",
-        serviceName, krbAccount.getName()));
+        hostName, krbAccount.getName()));
     Intent intent =
-        ServiceTicketActivity.getServiceTicketIntent(context, serviceName, response);
+        ServiceTicketActivity.getServiceTicketIntent(context, hostName, response);
     result.putParcelable(AccountManager.KEY_INTENT, intent);
     return result;
   }

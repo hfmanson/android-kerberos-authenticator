@@ -30,10 +30,10 @@ import java.util.Date;
 import java.util.Arrays;
 import java.net.InetAddress;
 import javax.crypto.SecretKey;
+import krb.javax.security.auth.RefreshFailedException;
 import krb.javax.security.auth.Refreshable;
 import javax.security.auth.Destroyable;
 import javax.security.auth.DestroyFailedException;
-import javax.security.auth.RefreshFailedException;
 
 import sun.misc.HexDumpEncoder;
 import sun.security.krb5.EncryptionKey;

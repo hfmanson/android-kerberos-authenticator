@@ -41,5 +41,5 @@ public class Constants {
   // Regex pattern to match the format of a service ticket type description.
   // Matches the formats word:word:...@serviceName.domain. ... .tld
   static final Pattern AUTH_TOKEN_PATTERN =
-      Pattern.compile("([\\w-]+):([\\w-]+):([\\w-]+)@([\\w-]+)\\.(.)*");
+      Pattern.compile("([\\w-]+):([\\w-]+):([\\w-]+)@([\\w-]+)\\.(.*)");
 }

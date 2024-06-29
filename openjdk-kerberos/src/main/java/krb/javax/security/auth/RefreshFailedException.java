@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -26,37 +26,35 @@
 package krb.javax.security.auth;
 
 /**
- * Objects such as credentials may optionally implement this
- * interface to provide the capability to refresh itself.
- * For example, a credential with a particular time-restricted lifespan
- * may implement this interface to allow callers to refresh the time period
- * for which it is valid.
+ * Signals that a {@code refresh} operation failed.
  *
- * @see javax.security.auth.Subject
+ * <p> This exception is thrown by credentials implementing
+ * the {@code Refreshable} interface when the {@code refresh}
+ * method fails.
+ *
+ * @since 1.4
  */
-public interface Refreshable {
+public class RefreshFailedException extends Exception {
+
+    @java.io.Serial
+    private static final long serialVersionUID = 5058444488565265840L;
 
     /**
-     * Determine if this {@code Object} is current.
-     *
-     * <p>
-     *
-     * @return true if this {@code Object} is currently current,
-     *          false otherwise.
+     * Constructs a RefreshFailedException with no detail message. A detail
+     * message is a String that describes this particular exception.
      */
-    boolean isCurrent();
+    public RefreshFailedException() {
+        super();
+    }
 
     /**
-     * Update or extend the validity period for this
-     * {@code Object}.
+     * Constructs a RefreshFailedException with the specified detail
+     * message.  A detail message is a String that describes this particular
+     * exception.
      *
-     * <p>
-     *
-     * @exception SecurityException if the caller does not have permission
-     *          to update or extend the validity period for this
-     *          {@code Object}. <p>
-     *
-     * @exception RefreshFailedException if the refresh attempt failed.
+     * @param msg the detail message.
      */
-    void refresh() throws RefreshFailedException;
+    public RefreshFailedException(String msg) {
+        super(msg);
+    }
 }
